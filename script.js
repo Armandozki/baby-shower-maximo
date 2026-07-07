@@ -61,6 +61,11 @@ function buildMapsLink() {
   return `https://www.google.com/maps/search/?api=1&query=${q}`;
 }
 
+function buildWazeLink() {
+  const q = encodeURIComponent(CONFIG.address);
+  return `https://waze.com/ul?q=${q}&navigate=yes`;
+}
+
 function pad(n) { return String(n).padStart(2, "0"); }
 
 function toGCalDateString(date) {
@@ -84,10 +89,12 @@ function buildCalendarLink() {
 function initActionLinks() {
   const waBtn = $("#btn-whatsapp");
   const mapsBtn = $("#btn-maps");
+  const wazeBtn = $("#btn-waze");
   const calBtn = $("#btn-calendar");
 
   if (waBtn) waBtn.href = buildWhatsAppLink();
   if (mapsBtn) mapsBtn.href = buildMapsLink();
+  if (wazeBtn) wazeBtn.href = buildWazeLink();
   if (calBtn) {
     calBtn.addEventListener("click", () => {
       window.open(buildCalendarLink(), "_blank", "noopener");

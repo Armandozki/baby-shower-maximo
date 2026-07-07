@@ -662,6 +662,13 @@ section::after {
   margin: 0 0 2rem;
 }
 
+.location-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .btn {
   position: relative;
   display: inline-flex;
