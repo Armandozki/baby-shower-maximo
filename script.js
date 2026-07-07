@@ -639,12 +639,20 @@ function initIntroVideo(musicPlayer) {
   let safetyTimer = null;
   let musicArmed = false;
 
-  // La música de fondo arranca recién en el primer scroll DESPUÉS del video,
-  // para no competir con su audio. Un solo listener, se autodestruye al usarse.
+  // La música de fondo arranca recién en la primera interacción DESPUÉS del
+  // video, para no competir con su audio. En iOS Safari el evento 'scroll'
+  // NO cuenta como gesto del usuario para permitir audio con sonido — solo
+  // toques/clics directos sí. Por eso se escuchan varios tipos a la vez y el
+  // primero que dispare arranca la música; los demás se limpian solos.
   function armMusicOnScroll() {
     if (musicArmed || !musicPlayer) return;
     musicArmed = true;
-    window.addEventListener("scroll", () => musicPlayer.play(), { once: true, passive: true });
+    const events = ["touchstart", "pointerdown", "click", "scroll"];
+    const start = () => {
+      musicPlayer.play();
+      events.forEach((ev) => window.removeEventListener(ev, start));
+    };
+    events.forEach((ev) => window.addEventListener(ev, start, { passive: true }));
   }
 
   function closeGate() {
