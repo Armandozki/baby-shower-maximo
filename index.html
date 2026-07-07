@@ -293,12 +293,10 @@
     <form
       name="wishes"
       method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
+      action="/api/wish"
       id="wish-form"
       class="wish-form reveal-up"
     >
-      <input type="hidden" name="form-name" value="wishes">
       <p class="wish-hp" aria-hidden="true">
         <label>No llenar este campo: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
       </p>
