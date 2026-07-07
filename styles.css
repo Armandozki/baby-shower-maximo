@@ -128,6 +128,7 @@ main { position: relative; z-index: 2; }
 
 section {
   position: relative;
+  isolation: isolate; /* crea un contexto de apilamiento local: los .decor (z-index:-1) quedan detrás del texto de ESTA sección, no ocultos por el fondo de otra */
   padding: var(--section-pad) 1.5rem;
   display: flex;
   flex-direction: column;
