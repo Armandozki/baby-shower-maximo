@@ -31,7 +31,7 @@ No se han borrado todavía porque no se ha confirmado explícitamente que deban 
 
 ## Estado visual/diseño
 
-- Paleta actual: celeste/teal derivada del arte original (`--color-primary: #4f8fa0`, `--color-secondary: #aed3e4`), fondo casi blanco, sombras suaves, tipografía Fraunces (display) + Poppins (body).
+- Paleta actual: azul/celeste saturado, no pastel (`--color-primary: #0e7c9e`, `--color-secondary: #4fc1e0` — actualizado 2026-07-07 a pedido del usuario, antes eran tonos mucho más suaves/pastel), fondo casi blanco, sombras suaves, tipografía Fraunces (display) + Poppins (body).
 - Se corrigió un bug de **z-index** que ocultaba las decoraciones SVG (elefante, globos, estrellas, etc.) detrás del fondo de otras secciones. Fix: cada `<section>` usa `isolation: isolate` para crear su propio contexto de apilamiento, y `.decor` usa `z-index: -1` relativo a esa sección (ver `styles.css`, commit `cbc8615`).
 - Animaciones vivas ya implementadas: oreja del elefante moviéndose, parpadeo, flotación de globos/nubes, parallax sutil en el hero, confeti en la sección final, reveal de texto palabra por palabra.
 
@@ -40,7 +40,7 @@ No se han borrado todavía porque no se ha confirmado explícitamente que deban 
 La carpeta `assets/` ya existe en el repo:
 - `assets/hero.jpg` — miniatura 9:16 (501×888) tomada del primer frame del video de bienvenida (globos celestes + banderines + "Baby Shower Máximo"). Recomprimida de PNG (530KB) a JPEG q82 (52KB, -90%) para no golpear el LCP en datos móviles. Reemplazó el placeholder; si llegara a faltar, sigue existiendo el fallback CSS (`.hero-fallback`).
 - `assets/video-bienvenida.mp4` — video de bienvenida (Kling 3.0, ~15s, elefante bajando en globo aerostático, saluda, habla, señala la info del evento, se despide, nubes/globos cubren pantalla). **Ya integrado**: reemplazó el preloader — ver sección siguiente.
-- `assets/music.mp3` — Mantra "Om Mani Padme Hum" (5:16, loop). Ya no arranca solo con el botón: al cerrar el video de bienvenida se arma un listener de scroll único (`armMusicOnScroll` en `initIntroVideo`) que la enciende automáticamente en el primer scroll del usuario, para no competir con el audio del video. El botón de música sigue disponible para pausar/reanudar a mano.
+- `assets/music.mp3` — Mozart, "Naturaleza para Calmar" con sonidos de pajaritos (15 min, loop). Reemplazó el mantra "Om Mani Padme Hum" inicial. No arranca sola con el botón: al cerrar el video de bienvenida se arma un listener de interacción único (toque/click/scroll — `armMusicOnScroll` en `initIntroVideo`) que la enciende en la primera interacción del usuario, para no competir con el audio del video. Se pausa sola si la pestaña pasa a segundo plano (Page Visibility API) y retoma al volver. El botón de música sigue disponible para pausar/reanudar a mano.
 
 ## Video de bienvenida (integrado)
 
