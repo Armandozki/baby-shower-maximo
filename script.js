@@ -544,7 +544,7 @@ function initMusicPlayer() {
 
   btn.addEventListener("click", () => { audio.paused ? play() : pause(); });
 
-  return { play, pause };
+  return { play, pause, isPlaying: () => !audio.paused };
 }
 
 /* ============================================================
@@ -638,6 +638,7 @@ function initIntroVideo(musicPlayer) {
   let chromeTimer = null;
   let safetyTimer = null;
   let musicArmed = false;
+  let musicWasPlaying = false;
 
   // La música de fondo arranca recién en la primera interacción DESPUÉS del
   // video, para no competir con su audio. En iOS Safari el evento 'scroll'
@@ -701,9 +702,14 @@ function initIntroVideo(musicPlayer) {
       video.currentTime = 0;
     }, 750);
     armMusicOnScroll();
+    if (musicWasPlaying && musicPlayer) musicPlayer.play();
   }
 
   function openVideo() {
+    if (musicPlayer) {
+      musicWasPlaying = musicPlayer.isPlaying();
+      musicPlayer.pause(); // no competir con el audio del video (ej. al reabrirlo desde el hero)
+    }
     videoWrap.hidden = false;
     requestAnimationFrame(() => videoWrap.classList.add("is-visible"));
 
