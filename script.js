@@ -520,28 +520,31 @@ function initFinaleGlow() {
 function initMusicPlayer() {
   const btn = $("#music-toggle");
   const audio = $("#bg-audio");
-  if (!btn || !audio) return;
+  if (!btn || !audio) return null;
 
   audio.volume = 0.5;
-  let playing = false;
 
-  btn.addEventListener("click", () => {
-    if (!playing) {
-      audio.play().then(() => {
-        playing = true;
-        btn.setAttribute("aria-pressed", "true");
-        btn.setAttribute("aria-label", "Silenciar música");
-      }).catch(() => {
-        // No hay archivo de audio en assets/music.mp3 todavía, o el navegador bloqueó la reproducción.
-        console.warn("No se pudo reproducir la música. Agrega un archivo en assets/music.mp3.");
-      });
-    } else {
-      audio.pause();
-      playing = false;
-      btn.setAttribute("aria-pressed", "false");
-      btn.setAttribute("aria-label", "Activar música");
-    }
-  });
+  function setPlayingState(isPlaying) {
+    btn.setAttribute("aria-pressed", String(isPlaying));
+    btn.setAttribute("aria-label", isPlaying ? "Silenciar música" : "Activar música");
+  }
+
+  function play() {
+    if (!audio.paused) return Promise.resolve();
+    return audio.play().then(() => setPlayingState(true)).catch(() => {
+      // No hay archivo de audio en assets/music.mp3 todavía, o el navegador bloqueó la reproducción.
+      console.warn("No se pudo reproducir la música. Agrega un archivo en assets/music.mp3.");
+    });
+  }
+
+  function pause() {
+    audio.pause();
+    setPlayingState(false);
+  }
+
+  btn.addEventListener("click", () => { audio.paused ? play() : pause(); });
+
+  return { play, pause };
 }
 
 /* ============================================================
@@ -618,7 +621,7 @@ function initScrollCue() {
    "Toca para comenzar" → video con sonido a pantalla completa →
    se revela el resto de la invitación (ya animada de fondo).
    ============================================================ */
-function initIntroVideo() {
+function initIntroVideo(musicPlayer) {
   const gate = $("#intro-gate");
   const startBtn = $("#intro-gate-btn");
   const videoWrap = $("#intro-video-wrap");
@@ -634,6 +637,15 @@ function initIntroVideo() {
 
   let chromeTimer = null;
   let safetyTimer = null;
+  let musicArmed = false;
+
+  // La música de fondo arranca recién en el primer scroll DESPUÉS del video,
+  // para no competir con su audio. Un solo listener, se autodestruye al usarse.
+  function armMusicOnScroll() {
+    if (musicArmed || !musicPlayer) return;
+    musicArmed = true;
+    window.addEventListener("scroll", () => musicPlayer.play(), { once: true, passive: true });
+  }
 
   function closeGate() {
     if (!gate) return;
@@ -680,6 +692,7 @@ function initIntroVideo() {
       videoWrap.hidden = true;
       video.currentTime = 0;
     }, 750);
+    armMusicOnScroll();
   }
 
   function openVideo() {
@@ -778,12 +791,12 @@ function initSafetyNet() {
    INIT
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  initIntroVideo();
+  const musicPlayer = initMusicPlayer();
+  initIntroVideo(musicPlayer);
   initActionLinks();
   initCountdown();
   initScrollProgress();
   initScrollCue();
-  initMusicPlayer();
   initWishForm();
 
   window.lenisInstance = initSmoothScroll();

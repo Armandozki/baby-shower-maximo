@@ -40,7 +40,7 @@ No se han borrado todavía porque no se ha confirmado explícitamente que deban 
 La carpeta `assets/` ya existe en el repo:
 - `assets/hero.jpg` — miniatura 9:16 (501×888) tomada del primer frame del video de bienvenida (globos celestes + banderines + "Baby Shower Máximo"). Recomprimida de PNG (530KB) a JPEG q82 (52KB, -90%) para no golpear el LCP en datos móviles. Reemplazó el placeholder; si llegara a faltar, sigue existiendo el fallback CSS (`.hero-fallback`).
 - `assets/video-bienvenida.mp4` — video de bienvenida (Kling 3.0, ~15s, elefante bajando en globo aerostático, saluda, habla, señala la info del evento, se despide, nubes/globos cubren pantalla). **Ya integrado**: reemplazó el preloader — ver sección siguiente.
-- `assets/music.mp3` — **todavía no existe**; música de fondo opcional (el botón de música falla silenciosamente si no existe).
+- `assets/music.mp3` — Mantra "Om Mani Padme Hum" (5:16, loop). Ya no arranca solo con el botón: al cerrar el video de bienvenida se arma un listener de scroll único (`armMusicOnScroll` en `initIntroVideo`) que la enciende automáticamente en el primer scroll del usuario, para no competir con el audio del video. El botón de música sigue disponible para pausar/reanudar a mano.
 
 ## Video de bienvenida (integrado)
 
