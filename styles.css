@@ -1,24 +1,39 @@
 /* ============================================================
    BABY SHOWER · MÁXIMO — Premium interactive invitation
-   Palette derived from the original artwork: soft celeste,
-   white, very light gray, teal accents. Soft shadows only.
+   Dirección visual: acuarela premium con acabado Disney/Pixar —
+   luz suave, profundidad "pintada", texturas de papel y un
+   toque de polvo mágico dorado sobre la paleta celeste original.
    ============================================================ */
 
 :root {
   /* ---- Configurable brand colors (kept in sync with script.js) ---- */
   --color-primary: #4f8fa0;      /* teal from ribbon / "BABY" lettering */
   --color-primary-dark: #3a6f7d;
+  --color-primary-deep: #2c4d57; /* deepest ink-teal, used for text gradients */
   --color-secondary: #aed3e4;    /* light celeste balloon tone */
   --color-secondary-soft: #d9ecf3;
   --color-bg: #f7fbfc;           /* near-white with a whisper of blue */
   --color-bg-alt: #eef5f8;
   --color-gray: #f0f3f5;
   --color-white: #ffffff;
+  --color-paper: #fffefb;        /* warm-white "paper" tone for cards */
   --color-ink: #26424b;          /* soft dark teal-gray for text, not pure black */
   --color-ink-soft: #5c7680;
 
-  --shadow-soft: 0 20px 60px -20px rgba(60, 110, 125, 0.25);
-  --shadow-softer: 0 10px 30px -12px rgba(60, 110, 125, 0.18);
+  /* ---- Warm accents: the Pixar "rim light" against the cool celeste base ---- */
+  --color-gold: #eec27e;
+  --color-gold-soft: #fbe7c2;
+  --color-blush: #f3cdc4;
+
+  /* ---- Painterly shadows: colored, layered, never flat gray ---- */
+  --shadow-soft: 0 26px 64px -22px rgba(45, 90, 105, 0.32), 0 6px 18px -8px rgba(45, 90, 105, 0.16);
+  --shadow-softer: 0 12px 30px -12px rgba(45, 90, 105, 0.2), 0 2px 8px -4px rgba(45, 90, 105, 0.12);
+  --shadow-card: 0 26px 54px -22px rgba(45, 90, 105, 0.28), 0 2px 10px -4px rgba(45, 90, 105, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --shadow-btn: 0 18px 40px -14px rgba(79, 143, 160, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  --shadow-glow-gold: 0 0 0 1px rgba(238, 194, 126, 0.25), 0 18px 40px -18px rgba(238, 194, 126, 0.55);
+
+  /* ---- Subtle watercolor paper grain (data-uri, no extra request) ---- */
+  --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -39,6 +54,7 @@ html, body {
 }
 
 body {
+  position: relative;
   margin: 0;
   font-family: var(--font-body);
   color: var(--color-ink);
@@ -46,6 +62,20 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+}
+
+/* Grano de papel muy sutil sobre todo el sitio: le da al color plano un
+   tacto "pintado" en vez de digital. mix-blend-mode preserva el color
+   de fondo, solo añade textura. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: var(--texture-grain);
 }
 
 img { max-width: 100%; display: block; }
@@ -134,6 +164,7 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 
 .section-kicker {
@@ -161,7 +192,9 @@ section {
   padding-top: clamp(3rem, 8vh, 5rem);
   padding-bottom: 3rem;
   justify-content: flex-start;
-  background: radial-gradient(ellipse at 50% 0%, var(--color-secondary-soft) 0%, var(--color-bg) 60%);
+  background:
+    radial-gradient(60% 45% at 18% 8%, rgba(238, 194, 126, 0.16), transparent 60%),
+    radial-gradient(ellipse at 50% 0%, var(--color-secondary-soft) 0%, var(--color-bg) 62%);
   overflow: hidden;
 }
 
@@ -211,7 +244,7 @@ section {
   margin-bottom: 2rem;
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-soft), 0 0 0 6px rgba(255, 255, 255, 0.7), 0 0 0 7px rgba(174, 211, 228, 0.4);
   background: var(--color-white);
 }
 
@@ -225,8 +258,10 @@ section {
 
 .hero-image-glow {
   position: absolute;
-  inset: -20%;
-  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.35), transparent 60%);
+  inset: -30%;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(255,255,255,0.4), transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(238, 194, 126, 0.25), transparent 60%);
   pointer-events: none;
   mix-blend-mode: screen;
 }
@@ -267,8 +302,12 @@ section {
   font-weight: 500;
   font-size: clamp(2.4rem, 7vw, 4rem);
   letter-spacing: -0.01em;
-  color: var(--color-primary-dark);
   margin: 0 0 0.6rem;
+  background: linear-gradient(180deg, var(--color-primary-dark) 20%, var(--color-primary-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.6)) drop-shadow(0 16px 30px rgba(45,90,105,0.2));
 }
 
 .hero-subtitle {
@@ -325,7 +364,10 @@ section {
 .name-reveal {
   min-height: 70vh;
   justify-content: center;
-  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+  background:
+    radial-gradient(55% 45% at 82% 18%, rgba(238, 194, 126, 0.14), transparent 65%),
+    radial-gradient(50% 40% at 12% 85%, rgba(174, 211, 228, 0.3), transparent 65%),
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
 }
 
 .name-reveal-label {
@@ -340,9 +382,13 @@ section {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(3.2rem, 14vw, 7.5rem);
-  color: var(--color-primary-dark);
   margin: 0;
   line-height: 1;
+  background: linear-gradient(175deg, var(--color-primary-dark) 15%, var(--color-primary-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.6)) drop-shadow(0 20px 34px rgba(45,90,105,0.22));
 }
 
 .name-underline {
@@ -350,11 +396,17 @@ section {
   height: 3px;
   border-radius: 2px;
   margin-top: 1.75rem;
-  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  background: linear-gradient(90deg, var(--color-gold), var(--color-secondary), var(--color-primary));
+  box-shadow: 0 0 16px 1px rgba(238, 194, 126, 0.5);
 }
 
 /* ============ COUNTDOWN ============ */
-.countdown-section { background: var(--color-bg-alt); }
+.countdown-section {
+  background:
+    radial-gradient(55% 45% at 12% 15%, rgba(174, 211, 228, 0.35), transparent 62%),
+    radial-gradient(45% 40% at 88% 85%, rgba(238, 194, 126, 0.16), transparent 65%),
+    var(--color-bg-alt);
+}
 
 .countdown-grid {
   display: grid;
@@ -365,15 +417,19 @@ section {
 }
 
 .countdown-unit {
-  background: var(--color-white);
+  background: linear-gradient(165deg, var(--color-paper), var(--color-bg-alt));
   border-radius: 20px;
   padding: clamp(1rem, 3vw, 1.75rem) 0.5rem;
-  box-shadow: var(--shadow-softer);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.35rem;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease;
 }
+.countdown-unit:nth-child(odd) { transform: rotate(-1.1deg); }
+.countdown-unit:nth-child(even) { transform: rotate(1.1deg); }
+.countdown-unit:hover { transform: rotate(0deg) translateY(-3px); box-shadow: var(--shadow-soft); }
 
 .countdown-number {
   font-family: var(--font-display);
@@ -391,14 +447,18 @@ section {
 }
 
 /* ============ INFO CARD ============ */
-.info-section { background: var(--color-bg); }
+.info-section {
+  background:
+    radial-gradient(50% 40% at 85% 15%, rgba(174, 211, 228, 0.22), transparent 65%),
+    var(--color-bg);
+}
 
 .info-card {
   width: 100%;
   max-width: 480px;
-  background: var(--color-white);
+  background: linear-gradient(165deg, var(--color-paper), #ffffff);
   border-radius: 28px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-card);
   padding: clamp(1.75rem, 5vw, 2.75rem);
 }
 
@@ -409,7 +469,11 @@ section {
   text-align: left;
 }
 
-.info-icon { font-size: 1.6rem; line-height: 1; }
+.info-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(45,90,105,0.2));
+}
 
 .info-label {
   display: block;
@@ -429,13 +493,21 @@ section {
 
 .info-divider {
   height: 1px;
-  background: var(--color-gray);
+  background: linear-gradient(90deg, transparent, var(--color-gray) 20%, var(--color-gray) 80%, transparent);
   margin: 1.25rem 0;
 }
 
 /* ============ ACTION SECTIONS ============ */
-.action-section { background: var(--color-bg-alt); }
-.action-section-alt { background: var(--color-bg); }
+.action-section {
+  background:
+    radial-gradient(45% 40% at 88% 12%, rgba(238, 194, 126, 0.14), transparent 65%),
+    var(--color-bg-alt);
+}
+.action-section-alt {
+  background:
+    radial-gradient(45% 40% at 10% 88%, rgba(174, 211, 228, 0.25), transparent 65%),
+    var(--color-bg);
+}
 
 .action-title {
   font-family: var(--font-display);
@@ -447,6 +519,7 @@ section {
 }
 
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -454,23 +527,46 @@ section {
   border-radius: 100px;
   font-size: 1rem;
   font-weight: 500;
+  overflow: hidden;
   transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
 }
 
+/* Brillo de "cristal pintado" que recorre el botón al pasar el mouse */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255,255,255,0.5) 0%, transparent 35%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+.btn:hover::after { left: 130%; }
+
 .btn-primary {
-  background: var(--color-primary);
+  background: linear-gradient(165deg, #5fa3b3, var(--color-primary) 55%, var(--color-primary-dark));
   color: var(--color-white);
-  box-shadow: 0 16px 36px -12px rgba(79, 143, 160, 0.55);
+  box-shadow: var(--shadow-btn);
 }
 
 .btn-secondary {
-  background: var(--color-white);
+  background: linear-gradient(165deg, var(--color-paper), #ffffff);
   color: var(--color-primary-dark);
-  box-shadow: var(--shadow-softer);
+  box-shadow: var(--shadow-card);
   border: 1px solid var(--color-secondary-soft);
 }
 
-.btn:hover { transform: translateY(-3px); }
+.btn:hover { transform: translateY(-4px) scale(1.015); box-shadow: var(--shadow-soft); }
 .btn:active { transform: translateY(-1px) scale(0.98); }
 
 .btn-icon { font-size: 1.1rem; }
@@ -498,7 +594,7 @@ section {
   font-family: var(--font-body);
   font-size: 0.98rem;
   color: var(--color-ink);
-  background: var(--color-white);
+  background: linear-gradient(165deg, var(--color-paper), #ffffff);
   border: 1px solid var(--color-secondary-soft);
   border-radius: 16px;
   padding: 0.9rem 1.1rem;
@@ -538,9 +634,9 @@ section {
 
 .wish-success {
   max-width: 420px;
-  background: var(--color-white);
+  background: linear-gradient(165deg, var(--color-paper), #ffffff);
   border-radius: 20px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-card);
   padding: 1.5rem 2rem;
   margin-top: 0.5rem;
   opacity: 0;
@@ -556,7 +652,9 @@ section {
 .finale {
   min-height: 90vh;
   justify-content: center;
-  background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-secondary-soft) 100%);
+  background:
+    radial-gradient(50% 40% at 85% 20%, rgba(238, 194, 126, 0.18), transparent 65%),
+    linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-secondary-soft) 100%);
   overflow: hidden;
 }
 
@@ -626,7 +724,7 @@ section {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: var(--color-white);
+  background: linear-gradient(165deg, var(--color-paper), #ffffff);
   box-shadow: var(--shadow-soft);
   display: flex;
   align-items: center;
@@ -671,7 +769,7 @@ section {
   z-index: -1; /* queda detrás del texto y las tarjetas, nunca las tapa */
   pointer-events: none;
   opacity: 0.55;
-  filter: drop-shadow(0 6px 14px rgba(60, 110, 125, 0.12));
+  filter: drop-shadow(0 6px 14px rgba(45, 90, 105, 0.14));
 }
 .decor svg { width: 100%; height: 100%; display: block; }
 .decor-sm { width: 30px; height: 30px; }
@@ -690,12 +788,27 @@ section {
 .decor-elephant-md { width: 128px; height: 118px; }
 .decor-elephant-lg { width: 176px; height: 162px; }
 
+/* Polvo mágico: destellos dorados de 4 puntas, tipo "pixie dust" */
+.decor-sparkle {
+  filter: drop-shadow(0 0 6px rgba(238, 194, 126, 0.65));
+  opacity: 0.85;
+}
+.decor-sparkle-xs { width: 12px; height: 12px; }
+.decor-sparkle-sm { width: 18px; height: 18px; }
+
 @keyframes decor-float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(3deg); }
 }
 .decor-float { animation: decor-float 7s ease-in-out infinite; }
 .decor-float-slow { animation: decor-float 9.5s ease-in-out infinite; animation-delay: 1.2s; }
+
+@keyframes decor-twinkle {
+  0%, 100% { transform: scale(0.7) rotate(0deg); opacity: 0.25; }
+  50% { transform: scale(1.15) rotate(18deg); opacity: 1; }
+}
+.decor-twinkle { animation: decor-twinkle 3.2s ease-in-out infinite; }
+.decor-twinkle-slow { animation: decor-twinkle 4.4s ease-in-out infinite; animation-delay: 0.8s; }
 
 /* Ternura del elefante: oreja que se mueve y parpadeo suave */
 .ele-ear {
@@ -718,7 +831,7 @@ section {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .decor-float, .decor-float-slow, .ele-ear, .ele-eye-open, .ele-eye-closed { animation: none; }
+  .decor-float, .decor-float-slow, .decor-twinkle, .decor-twinkle-slow, .ele-ear, .ele-eye-open, .ele-eye-closed { animation: none; }
 }
 
 @media (max-width: 560px) {
