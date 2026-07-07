@@ -544,6 +544,22 @@ function initMusicPlayer() {
 
   btn.addEventListener("click", () => { audio.paused ? play() : pause(); });
 
+  // Pausar al pasar a segundo plano (cambiar de app, apagar pantalla, minimizar
+  // el navegador) y retomar sola al volver — solo si fue el sistema quien la
+  // pausó, nunca si el usuario la había pausado a mano antes de salir.
+  let pausedByVisibility = false;
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (!audio.paused) {
+        pausedByVisibility = true;
+        pause();
+      }
+    } else if (pausedByVisibility) {
+      pausedByVisibility = false;
+      play();
+    }
+  });
+
   return { play, pause, isPlaying: () => !audio.paused };
 }
 
