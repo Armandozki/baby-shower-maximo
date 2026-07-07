@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+  <html lang="es">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Baby Shower · Máximo</title>
+<meta name="description" content="Te invitamos a celebrar la llegada de Máximo. Sábado 5 de Septiembre, 2026.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>">
+  </head>
+  <body>
+
+  <svg style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
+  <defs>
+  <symbol id="decor-heart" viewBox="0 0 48 44">
+  <path d="M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z" fill="var(--color-secondary)"/>
+  </symbol>
+  <symbol id="decor-star" viewBox="0 0 40 40">
+  <path d="M20 0 C21 12 28 19 40 20 C28 21 21 28 20 40 C19 28 12 21 0 20 C12 19 19 12 20 0Z" fill="var(--color-primary)"/>
+  </symbol>
+  <symbol id="decor-sprig" viewBox="0 0 60 90">
+  <g fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round">
+  <path d="M30 87 C30 60 30 40 30 4"/>
+  <path d="M30 55 C20 48 12 50 6 42"/>
+  <path d="M30 38 C40 32 46 34 52 26"/>
+  <path d="M30 22 C22 17 16 19 10 12"/>
+  </g>
+  </symbol>
+  <symbol id="decor-balloon" viewBox="0 0 60 80">
+  <path d="M30 2 C14 2 6 16 6 30 C6 42 16 50 20 52 L20 60 L40 60 L40 52 C44 50 54 42 54 30 C54 16 46 2 30 2Z" fill="var(--color-secondary)"/>
+  <rect x="24" y="62" width="12" height="10" rx="2" fill="var(--color-primary)"/>
+  <line x1="20" y1="58" x2="25" y2="63" stroke="var(--color-primary)" stroke-width="1.5"/>
+  <line x1="40" y1="58" x2="35" y2="63" stroke="var(--color-primary)" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="decor-moon" viewBox="0 0 40 40">
+  <path d="M25 2 A18 18 0 1 0 25 38 A14 14 0 1 1 25 2Z" fill="var(--color-secondary)"/>
+  </symbol>
+  <symbol id="decor-rainbow" viewBox="0 0 200 100">
+  <path d="M10 100 A90 90 0 0 1 190 100" fill="none" stroke="var(--color-secondary)" stroke-width="10"/>
+  <path d="M28 100 A72 72 0 0 1 172 100" fill="none" stroke="var(--color-primary)" stroke-width="8" opacity="0.6"/>
+  <path d="M46 100 A54 54 0 0 1 154 100" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.85"/>
+  </symbol>
+  <symbol id="decor-bunting" viewBox="0 0 220 46">
+  <path d="M6 2 L6 8 L214 8 L214 2" fill="none" stroke="#b98a5e" stroke-width="1.5"/>
+  <path d="M14 8 L34 8 L24 34 Z" fill="var(--color-secondary)"/>
+  <path d="M46 8 L66 8 L56 38 Z" fill="var(--color-primary)" opacity="0.85"/>
+  <path d="M78 8 L98 8 L88 30 Z" fill="var(--color-secondary)"/>
+  <path d="M110 8 L130 8 L120 36 Z" fill="var(--color-primary)" opacity="0.85"/>
+  <path d="M142 8 L162 8 L152 30 Z" fill="var(--color-secondary)"/>
+  <path d="M174 8 L194 8 L184 34 Z" fill="var(--color-primary)" opacity="0.85"/>
+  <circle cx="24" cy="20" r="2" fill="#ffffff" opacity="0.7"/>
+  <circle cx="88" cy="18" r="2" fill="#ffffff" opacity="0.7"/>
+  <circle cx="152" cy="18" r="2" fill="#ffffff" opacity="0.7"/>
+  </symbol>
+  </defs>
+  </svg>
+
+  <div id="preloader" aria-hidden="true">
+  <div class="preloader-mark">
+  <span class="preloader-balloon"></span>
+  </div>
+  </div>
+
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+
+  <main id="top">
+
+  <section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true">
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <div class="cloud cloud-4"></div>
+  </div>
+
+  <div class="hero-inner">
+  <p class="eyebrow reveal-line">Baby Shower</p>
+
+  <div class="hero-image-wrap">
+  <img
+  id="hero-image"
+  src="assets/hero.png"
+  alt="Invitación Baby Shower de Máximo — globo aerostático celeste con elefante bebé"
+  class="hero-image"
+  fetchpriority="high"
+  onerror="this.closest('.hero-image-wrap').classList.add('img-fallback')"
+  >
+  <div class="hero-fallback" aria-hidden="true">
+  <div class="fallback-balloon">
+  <span class="fallback-balloon-panel"></span>
+  <span class="fallback-balloon-basket"></span>
+  </div>
+  </div>
+  <div class="hero-image-glow"></div>
+  </div>
+
+  <h1 class="hero-title reveal-up">Baby&nbsp;Shower</h1>
+  <p class="hero-subtitle reveal-up">Te invitamos a celebrar la llegada de nuestro bebé</p>
+
+<button class="scroll-cue" id="scroll-cue" aria-label="Bajar para ver más">
+<span class="scroll-cue-dot"></span>
+</button>
+</div>
+</section>
+
+<section class="story-line" id="story-intro">
+  <div class="decor decor-md decor-float" style="top:14%; left:8%;" aria-hidden="true"><svg><use href="#decor-star"></use></svg></div>
+  <div class="decor decor-sprig decor-float-slow" style="bottom:10%; right:9%;" aria-hidden="true"><svg><use href="#decor-sprig"></use></svg></div>
+  <p class="story-text" data-split-text>Una pequeña aventura está por comenzar…</p>
+</section>
+
+<section class="name-reveal" id="name-reveal">
+<div class="decor decor-md decor-float" style="top:10%; right:10%;" aria-hidden="true"><svg><use href="#decor-balloon"></use></svg></div>
+  <div class="decor decor-sm decor-float-slow" style="bottom:14%; left:9%;" aria-hidden="true"><svg><use href="#decor-heart"></use></svg></div>
+  <p class="name-reveal-label reveal-up">¡Nuestro pequeño príncipe se llama Máximo! 💙</p>
+  <h2 class="name-reveal-title" id="baby-name">Máximo</h2>
+  <div class="name-underline reveal-scale"></div>
+  </section>
+
+  <section class="countdown-section" id="countdown">
+  <div class="decor decor-sm decor-float" style="top:8%; left:6%;" aria-hidden="true"><svg><use href="#decor-star"></use></svg></div>
+  <div class="decor decor-sm decor-float-slow" style="top:12%; right:7%;" aria-hidden="true"><svg><use href="#decor-star"></use></svg></div>
+  <p class="section-kicker reveal-up">Faltan solo</p>
+  <div class="countdown-grid">
+  <div class="countdown-unit reveal-up">
+  <span class="countdown-number" id="cd-days">00</span>
+  <span class="countdown-label">Días</span>
+  </div>
+  <div class="countdown-unit reveal-up">
+  <span class="countdown-number" id="cd-hours">00</span>
+  <span class="countdown-label">Horas</span>
+  </div>
+  <div class="countdown-unit reveal-up">
+  <span class="countdown-number" id="cd-minutes">00</span>
+  <span class="countdown-label">Minutos</span>
+  </div>
+  <div class="countdown-unit reveal-up">
+  <span class="countdown-number" id="cd-seconds">00</span>
+  <span class="countdown-label">Segundos</span>
+  </div>
+  </div>
+  </section>
+
+  <section class="info-section" id="info">
+  <div class="decor decor-sprig decor-float-slow" style="top:8%; left:6%;" aria-hidden="true"><svg><use href="#decor-sprig"></use></svg></div>
+  <div class="info-card reveal-up">
+  <div class="info-row">
+  <span class="info-icon" aria-hidden="true">📅</span>
+  <div>
+  <span class="info-label">Fecha</span>
+  <span class="info-value" id="info-date">Sábado 5 de Septiembre, 2026</span>
+  </div>
+  </div>
+  <div class="info-divider"></div>
+  <div class="info-row">
+  <span class="info-icon" aria-hidden="true">🕓</span>
+  <div>
+  <span class="info-label">Hora</span>
+  <span class="info-value" id="info-time">16:00 hrs.</span>
+  </div>
+  </div>
+  <div class="info-divider"></div>
+  <div class="info-row">
+  <span class="info-icon" aria-hidden="true">📍</span>
+  <div>
+  <span class="info-label">Lugar</span>
+  <span class="info-value" id="info-address">Caleta de Camarones 0680, Maipú</span>
+  </div>
+  </div>
+  </div>
+  </section>
+
+  <section class="action-section" id="rsvp">
+  <div class="decor decor-md decor-float" style="top:10%; right:8%;" aria-hidden="true"><svg><use href="#decor-heart"></use></svg></div>
+  <p class="section-kicker reveal-up">Tu presencia lo hará especial</p>
+<h3 class="action-title reveal-up">Confirmar asistencia</h3>
+<a href="#" id="btn-whatsapp" class="btn btn-primary reveal-up" target="_blank" rel="noopener">
+  <span class="btn-icon" aria-hidden="true">💬</span>
+  Confirmar asistencia
+</a>
+  </section>
+
+  <section class="action-section action-section-alt" id="location">
+  <div class="decor decor-md decor-float-slow" style="top:9%; left:7%;" aria-hidden="true"><svg><use href="#decor-balloon"></use></svg></div>
+  <p class="section-kicker reveal-up">¿Cómo llegar?</p>
+<h3 class="action-title reveal-up">Caleta de Camarones 0680, Maipú</h3>
+  <a href="#" id="btn-maps" class="btn btn-secondary reveal-up" target="_blank" rel="noopener">
+  <span class="btn-icon" aria-hidden="true">🗺️</span>
+  Ver ubicación
+</a>
+</section>
+
+<section class="action-section" id="calendar">
+<div class="decor decor-sm decor-float" style="top:8%; right:9%;" aria-hidden="true"><svg><use href="#decor-moon"></use></svg></div>
+  <div class="decor decor-sm decor-float-slow" style="bottom:12%; left:8%;" aria-hidden="true"><svg><use href="#decor-star"></use></svg></div>
+  <p class="section-kicker reveal-up">No te lo pierdas</p>
+  <h3 class="action-title reveal-up">Agrega la fecha a tu calendario</h3>
+  <button id="btn-calendar" class="btn btn-secondary reveal-up">
+  <span class="btn-icon" aria-hidden="true">🗓️</span>
+  Agregar al calendario
+</button>
+</section>
+
+<section class="action-section action-section-alt" id="wishes">
+<div class="decor decor-md decor-float" style="top:8%; left:8%;" aria-hidden="true"><svg><use href="#decor-heart"></use></svg></div>
+  <p class="section-kicker reveal-up">Un mensaje para el futuro</p>
+<h3 class="action-title reveal-up">Escribe tu deseo para Máximo</h3>
+  <p class="wish-hint reveal-up">Quedará guardado para que, más adelante, pueda leer lo que le deseaste hoy.</p>
+
+<form
+name="wishes"
+method="POST"
+data-netlify="true"
+netlify-honeypot="bot-field"
+id="wish-form"
+  class="wish-form reveal-up"
+  >
+  <input type="hidden" name="form-name" value="wishes">
+  <p class="wish-hp" aria-hidden="true">
+  <label>No llenar este campo: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+  </p>
+
+  <input type="text" name="nombre" id="wish-name" class="wish-input" placeholder="Tu nombre (opcional)">
+  <textarea name="deseo" id="wish-message" class="wish-textarea" rows="4" placeholder="Escribe tu deseo para Máximo…" required></textarea>
+
+<button type="submit" class="btn btn-primary wish-submit">
+  <span class="btn-icon" aria-hidden="true">💌</span>
+  Enviar deseo
+</button>
+  <p class="wish-error" id="wish-error" hidden>No se pudo enviar tu deseo. Inténtalo de nuevo en un momento.</p>
+</form>
+
+<div class="wish-success" id="wish-success" hidden>
+<p>💙 ¡Gracias! Tu deseo para Máximo quedó guardado.</p>
+</div>
+</section>
+
+  <section class="finale" id="finale">
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  <div class="decor decor-lg" style="bottom:6%; left:50%; transform:translateX(-50%); opacity:0.35;" aria-hidden="true"><svg><use href="#decor-rainbow"></use></svg></div>
+  <div class="decor decor-sprig decor-float-slow" style="top:8%; right:8%;" aria-hidden="true"><svg><use href="#decor-sprig"></use></svg></div>
+  <div class="finale-inner">
+  <div class="finale-glow"></div>
+  <p class="finale-emoji reveal-scale" aria-hidden="true">🐘</p>
+  <h3 class="finale-title reveal-up">Gracias por ser parte de esta historia</h3>
+<p class="finale-text reveal-up">Cada mensaje, cada gesto y cada minuto de tu tiempo significan muchísimo para nosotros. Nos hace muy felices poder compartir contigo la llegada de Máximo.</p>
+<p class="finale-signoff reveal-up">Con cariño, esperando verte pronto 💙</p>
+</div>
+</section>
+
+</main>
+
+<div class="music-player" id="music-player">
+<button id="music-toggle" class="music-toggle" aria-pressed="false" aria-label="Activar música">
+  <span class="music-icon music-icon-play">♪</span>
+  <span class="music-bars" aria-hidden="true">
+  <i></i><i></i><i></i>
+  </span>
+  </button>
+  <audio id="bg-audio" loop preload="none" src="assets/music.mp3"></audio>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+  <script src="script.js"></script>
+  </body>
+  </html>
