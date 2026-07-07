@@ -186,6 +186,49 @@ button {
 .intro-skip-btn.is-visible { opacity: 1; }
 .intro-skip-btn:hover { background: rgba(12, 26, 30, 0.55); }
 
+.intro-video-controls {
+  position: absolute;
+  left: 50%;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 100px;
+  background: rgba(12, 26, 30, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.intro-video-controls.is-visible { opacity: 1; }
+
+.intro-ctrl-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.85rem;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.intro-ctrl-btn:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.06); }
+.intro-ctrl-icon { line-height: 1; }
+
+.intro-volume {
+  width: 72px;
+  accent-color: #ffffff;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .intro-volume { width: 52px; }
+}
+
 /* ============ AMBIENT PARTICLES ============ */
 #particles-canvas {
   position: fixed;

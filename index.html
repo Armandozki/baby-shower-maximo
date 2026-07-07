@@ -152,6 +152,18 @@
     preload="none"
   ></video>
   <button id="intro-skip-btn" class="intro-skip-btn" type="button">Cerrar ✕</button>
+
+  <div id="intro-video-controls" class="intro-video-controls">
+    <button id="intro-play-btn" class="intro-ctrl-btn" type="button" aria-label="Pausar video" aria-pressed="false">
+      <span class="intro-ctrl-icon" data-icon="pause" aria-hidden="true">❚❚</span>
+      <span class="intro-ctrl-icon" data-icon="play" aria-hidden="true" hidden>▶</span>
+    </button>
+    <button id="intro-mute-btn" class="intro-ctrl-btn" type="button" aria-label="Silenciar" aria-pressed="false">
+      <span class="intro-ctrl-icon" data-icon="vol-on" aria-hidden="true">🔊</span>
+      <span class="intro-ctrl-icon" data-icon="vol-off" aria-hidden="true" hidden>🔇</span>
+    </button>
+    <input type="range" id="intro-volume" class="intro-volume" min="0" max="1" step="0.05" value="1" aria-label="Volumen">
+  </div>
 </div>
 
 <!-- ============ AMBIENT PARTICLES CANVAS ============ -->

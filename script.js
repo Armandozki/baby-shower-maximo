@@ -618,9 +618,13 @@ function initIntroVideo() {
   const video = $("#intro-video");
   const skipBtn = $("#intro-skip-btn");
   const replayBtn = $("#replay-video-btn");
+  const controls = $("#intro-video-controls");
+  const playBtn = $("#intro-play-btn");
+  const muteBtn = $("#intro-mute-btn");
+  const volumeSlider = $("#intro-volume");
   if (!videoWrap || !video || !skipBtn) return;
 
-  let skipTimer = null;
+  let chromeTimer = null;
   let safetyTimer = null;
 
   function closeGate() {
@@ -632,12 +636,36 @@ function initIntroVideo() {
     }
   }
 
+  function setIcon(btn, name) {
+    if (!btn) return;
+    btn.querySelectorAll("[data-icon]").forEach((el) => { el.hidden = el.dataset.icon !== name; });
+  }
+
+  function updatePlayIcon() {
+    setIcon(playBtn, video.paused ? "play" : "pause");
+    if (playBtn) {
+      playBtn.setAttribute("aria-pressed", String(!video.paused));
+      playBtn.setAttribute("aria-label", video.paused ? "Reproducir video" : "Pausar video");
+    }
+  }
+
+  function updateMuteIcon() {
+    const isMuted = video.muted || video.volume === 0;
+    setIcon(muteBtn, isMuted ? "vol-off" : "vol-on");
+    if (muteBtn) {
+      muteBtn.setAttribute("aria-pressed", String(isMuted));
+      muteBtn.setAttribute("aria-label", isMuted ? "Activar sonido" : "Silenciar");
+    }
+    if (volumeSlider) volumeSlider.value = isMuted ? 0 : video.volume;
+  }
+
   // El video queda siempre en el DOM (oculto) para poder reabrirlo desde el botón del hero
   function closeVideo() {
-    clearTimeout(skipTimer);
+    clearTimeout(chromeTimer);
     clearTimeout(safetyTimer);
     videoWrap.classList.remove("is-visible");
     skipBtn.classList.remove("is-visible");
+    if (controls) controls.classList.remove("is-visible");
     video.pause();
     setTimeout(() => {
       videoWrap.hidden = true;
@@ -661,7 +689,11 @@ function initIntroVideo() {
     }
 
     skipBtn.classList.remove("is-visible");
-    skipTimer = setTimeout(() => skipBtn.classList.add("is-visible"), 1800);
+    if (controls) controls.classList.remove("is-visible");
+    chromeTimer = setTimeout(() => {
+      skipBtn.classList.add("is-visible");
+      if (controls) controls.classList.add("is-visible");
+    }, 1800);
     // Salvavidas: si 'ended' no dispara por algún motivo, no dejar al usuario atrapado
     safetyTimer = setTimeout(closeVideo, 30000);
   }
@@ -675,8 +707,41 @@ function initIntroVideo() {
   skipBtn.addEventListener("click", closeVideo);
   video.addEventListener("ended", closeVideo);
   video.addEventListener("error", closeVideo);
+
+  if (playBtn) {
+    playBtn.addEventListener("click", () => { video.paused ? video.play() : video.pause(); });
+  }
+  if (muteBtn) {
+    muteBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+      if (!video.muted && video.volume === 0) video.volume = 1;
+    });
+  }
+  if (volumeSlider) {
+    volumeSlider.addEventListener("input", () => {
+      video.volume = parseFloat(volumeSlider.value);
+      video.muted = video.volume === 0;
+    });
+  }
+  video.addEventListener("play", updatePlayIcon);
+  video.addEventListener("pause", updatePlayIcon);
+  video.addEventListener("volumechange", updateMuteIcon);
+
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !videoWrap.hidden) closeVideo();
+    if (videoWrap.hidden) return;
+    if (e.key === "Escape") { closeVideo(); return; }
+    if (e.key === " " || e.key === "Spacebar") {
+      e.preventDefault();
+      video.paused ? video.play() : video.pause();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      video.muted = false;
+      video.volume = Math.min(1, video.volume + 0.1);
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      video.volume = Math.max(0, video.volume - 0.1);
+      video.muted = video.volume === 0;
+    }
   });
 }
 
