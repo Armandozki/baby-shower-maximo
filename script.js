@@ -27,7 +27,7 @@ const CONFIG = {
 
   // ---- Imagen principal ----
   // Coloca el archivo original de la invitación en assets/hero.jpg (o cambia esta ruta)
-  heroImageSrc: "assets/hero.jpg",
+  heroImageSrc: "assets/hero.jpg?v=6",
 
   // ---- Parpadeo del elefante ----
   // Ajusta estos porcentajes para alinear el óvalo de "parpadeo" con los ojos
