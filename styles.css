@@ -45,7 +45,7 @@
   --container-w: 720px;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 html {
   scroll-behavior: auto; /* Lenis handles smoothing */
@@ -186,6 +186,31 @@ button {
 .intro-skip-btn.is-visible { opacity: 1; }
 .intro-skip-btn:hover { background: rgba(12, 26, 30, 0.55); }
 
+/* Loader mientras el video hace buffer (conexiones móviles lentas) */
+.intro-video-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.intro-video-loading.is-visible { opacity: 1; }
+.intro-spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #ffffff;
+  animation: intro-spin 0.85s linear infinite;
+}
+@keyframes intro-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .intro-spinner { animation: none; }
+}
+
 .intro-video-controls {
   position: absolute;
   left: 50%;
@@ -206,14 +231,14 @@ button {
 .intro-video-controls.is-visible { opacity: 1; }
 
 .intro-ctrl-btn {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   transition: background 0.25s ease, transform 0.25s ease;
 }
 .intro-ctrl-btn:hover { background: rgba(255, 255, 255, 0.15); transform: scale(1.06); }
@@ -225,8 +250,10 @@ button {
   cursor: pointer;
 }
 
-@media (max-width: 420px) {
-  .intro-volume { width: 52px; }
+/* En celular el volumen se ajusta con los botones físicos: el slider fino
+   es dificil de arrastrar con el dedo, así que se prioriza el botón de mute. */
+@media (max-width: 480px) {
+  .intro-volume { display: none; }
 }
 
 /* ============ AMBIENT PARTICLES ============ */
@@ -410,7 +437,7 @@ section::after {
   mix-blend-mode: screen;
 }
 
-/* Graceful fallback illustration if assets/hero.png hasn't been added yet */
+/* Graceful fallback illustration if assets/hero.jpg hasn't been added yet */
 .hero-fallback {
   display: none;
   position: absolute;
@@ -743,7 +770,7 @@ section::after {
 .wish-textarea {
   width: 100%;
   font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-size: 1rem; /* nunca bajar de 16px: menos que eso hace zoom automatico al enfocar en iOS Safari */
   color: var(--color-ink);
   background: linear-gradient(165deg, var(--color-paper), #ffffff);
   border: 1px solid var(--color-secondary-soft);
@@ -867,7 +894,7 @@ section::after {
 .music-player {
   position: fixed;
   right: clamp(1rem, 4vw, 2rem);
-  bottom: clamp(1rem, 4vw, 2rem);
+  bottom: max(clamp(1rem, 4vw, 2rem), env(safe-area-inset-bottom));
   z-index: 400;
 }
 

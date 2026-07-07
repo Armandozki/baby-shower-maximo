@@ -26,8 +26,8 @@ const CONFIG = {
   colorSecondary: "#aed3e4",
 
   // ---- Imagen principal ----
-  // Coloca el archivo original de la invitación en assets/hero.png (o cambia esta ruta)
-  heroImageSrc: "assets/hero.png",
+  // Coloca el archivo original de la invitación en assets/hero.jpg (o cambia esta ruta)
+  heroImageSrc: "assets/hero.jpg",
 
   // ---- Parpadeo del elefante ----
   // Ajusta estos porcentajes para alinear el óvalo de "parpadeo" con los ojos
@@ -629,6 +629,7 @@ function initIntroVideo() {
   const playBtn = $("#intro-play-btn");
   const muteBtn = $("#intro-mute-btn");
   const volumeSlider = $("#intro-volume");
+  const loading = $("#intro-video-loading");
   if (!videoWrap || !video || !skipBtn) return;
 
   let chromeTimer = null;
@@ -673,6 +674,7 @@ function initIntroVideo() {
     videoWrap.classList.remove("is-visible");
     skipBtn.classList.remove("is-visible");
     if (controls) controls.classList.remove("is-visible");
+    if (loading) loading.classList.remove("is-visible");
     video.pause();
     setTimeout(() => {
       videoWrap.hidden = true;
@@ -733,6 +735,11 @@ function initIntroVideo() {
   video.addEventListener("play", updatePlayIcon);
   video.addEventListener("pause", updatePlayIcon);
   video.addEventListener("volumechange", updateMuteIcon);
+
+  if (loading) {
+    video.addEventListener("waiting", () => loading.classList.add("is-visible"));
+    video.addEventListener("playing", () => loading.classList.remove("is-visible"));
+  }
 
   document.addEventListener("keydown", (e) => {
     if (videoWrap.hidden) return;

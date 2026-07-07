@@ -38,7 +38,7 @@ No se han borrado todavía porque no se ha confirmado explícitamente que deban 
 ## Assets
 
 La carpeta `assets/` ya existe en el repo:
-- `assets/hero.png` — miniatura 9:16 (501×888) tomada del primer frame del video de bienvenida (globos celestes + banderines + "Baby Shower Máximo"). Reemplazó el placeholder; si llegara a faltar, sigue existiendo el fallback CSS (`.hero-fallback`).
+- `assets/hero.jpg` — miniatura 9:16 (501×888) tomada del primer frame del video de bienvenida (globos celestes + banderines + "Baby Shower Máximo"). Recomprimida de PNG (530KB) a JPEG q82 (52KB, -90%) para no golpear el LCP en datos móviles. Reemplazó el placeholder; si llegara a faltar, sigue existiendo el fallback CSS (`.hero-fallback`).
 - `assets/video-bienvenida.mp4` — video de bienvenida (Kling 3.0, ~15s, elefante bajando en globo aerostático, saluda, habla, señala la info del evento, se despide, nubes/globos cubren pantalla). **Ya integrado**: reemplazó el preloader — ver sección siguiente.
 - `assets/music.mp3` — **todavía no existe**; música de fondo opcional (el botón de música falla silenciosamente si no existe).
 
@@ -87,3 +87,5 @@ Pendiente de validar visualmente en navegador (no se pudo verificar con captura 
 | 2026-07-07 | Video de bienvenida integrado: reemplaza el preloader con flujo "toca para comenzar" → video con sonido → reveal. Botón ▶ en el hero para volver a verlo. |
 | 2026-07-07 | `assets/hero.png` agregado: miniatura 9:16 del primer frame del video (globos + banderines + texto). `.hero-image-wrap` pasó de aspect-ratio 3:4 a 9:16 para no recortarla. |
 | 2026-07-07 | Usuario pidió usar 4 imágenes de stock (depositphotos) como fondo/decoración. 3 de 4 tenían marca de agua o eran vector genérico plano (conflicto con la dirección de diseño) → en vez de usarlas, se recreó la idea en el sistema SVG propio: textura de corazones dispersos (`--texture-hearts`, aplicada vía `section::after` en TODAS las secciones como fondo general) + racimos de globos añadidos en `rsvp` y `finale` + elefante replicado (tamaño nuevo `decor-elephant-sm`) en `info`. Cero assets externos con licencia dudosa. |
+| 2026-07-07 | Botón "Abrir en Waze" agregado junto a "Abrir en Google Maps" en la sección `location` (`buildWazeLink()` en `script.js`). |
+| 2026-07-07 | Pase de optimización móvil (foco: la mayoría entra desde celular): `hero.png`→`hero.jpg` (-90% peso, 530KB→52KB), fix de zoom automático iOS en inputs del formulario (min 16px), botones del reproductor de video subidos a 44px (mínimo táctil), slider de volumen oculto bajo 480px (se prioriza el botón de mute + volumen físico del equipo), `-webkit-tap-highlight-color: transparent` global, `env(safe-area-inset-bottom)` en el reproductor de música, spinner de carga en el video para conexiones lentas. |

@@ -151,6 +151,7 @@
     webkit-playsinline="true"
     preload="none"
   ></video>
+  <div id="intro-video-loading" class="intro-video-loading" aria-hidden="true"><span class="intro-spinner"></span></div>
   <button id="intro-skip-btn" class="intro-skip-btn" type="button">Cerrar ✕</button>
 
   <div id="intro-video-controls" class="intro-video-controls">
@@ -195,10 +196,10 @@
       <p class="eyebrow reveal-line">¡Invitación Especial!</p>
 
       <div class="hero-image-wrap">
-        <!-- Drop the original invitation artwork at assets/hero.png (or .jpg) -->
+        <!-- Miniatura 9:16 del video de bienvenida, comprimida para carga rápida en móvil -->
         <img
           id="hero-image"
-          src="assets/hero.png"
+          src="assets/hero.jpg"
           alt="Invitación Baby Shower de Máximo — globo aerostático celeste con elefante bebé"
           class="hero-image"
           fetchpriority="high"
