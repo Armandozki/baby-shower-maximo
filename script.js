@@ -22,8 +22,8 @@ const CONFIG = {
   whatsappMessage: "¡Hola! Quiero confirmar mi asistencia al Baby Shower de Máximo 💙",
 
   // ---- Marca / colores (deben coincidir con las variables CSS en :root) ----
-  colorPrimary: "#4f8fa0",
-  colorSecondary: "#aed3e4",
+  colorPrimary: "#0e7c9e",
+  colorSecondary: "#4fc1e0",
 
   // ---- Imagen principal ----
   // Coloca el archivo original de la invitación en assets/hero.jpg (o cambia esta ruta)

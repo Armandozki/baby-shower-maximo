@@ -7,11 +7,11 @@
 
 :root {
   /* ---- Configurable brand colors (kept in sync with script.js) ---- */
-  --color-primary: #4f8fa0;      /* teal from ribbon / "BABY" lettering */
-  --color-primary-dark: #3a6f7d;
-  --color-primary-deep: #2c4d57; /* deepest ink-teal, used for text gradients */
-  --color-secondary: #aed3e4;    /* light celeste balloon tone */
-  --color-secondary-soft: #d9ecf3;
+  --color-primary: #0e7c9e;      /* azul pavo real / lago — mas intenso que el teal original */
+  --color-primary-dark: #0a6280;
+  --color-primary-deep: #073f52; /* deepest ink-blue, used for text gradients */
+  --color-secondary: #4fc1e0;    /* azul cielo / pajaro — celeste saturado, no pastel */
+  --color-secondary-soft: #a8e2f2;
   --color-bg: #f7fbfc;           /* near-white with a whisper of blue */
   --color-bg-alt: #eef5f8;
   --color-gray: #f0f3f5;
@@ -29,14 +29,14 @@
   --shadow-soft: 0 24px 56px -26px rgba(45, 90, 105, 0.24), 0 5px 14px -9px rgba(45, 90, 105, 0.12);
   --shadow-softer: 0 10px 24px -14px rgba(45, 90, 105, 0.15), 0 2px 6px -4px rgba(45, 90, 105, 0.09);
   --shadow-card: 0 22px 46px -26px rgba(45, 90, 105, 0.2), 0 2px 8px -4px rgba(45, 90, 105, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  --shadow-btn: 0 14px 30px -15px rgba(79, 143, 160, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  --shadow-btn: 0 14px 30px -15px rgba(14, 124, 158, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.4);
   --shadow-glow-gold: 0 0 0 1px rgba(238, 194, 126, 0.18), 0 14px 30px -18px rgba(238, 194, 126, 0.4);
 
   /* ---- Subtle watercolor paper grain (data-uri, no extra request) ---- */
   --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   /* ---- Fondo general: corazoncitos dispersos en acuarela, muy sutil (propio, no stock) ---- */
-  --texture-hearts: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg fill='%23aed3e4' fill-opacity='0.55'%3E%3Cpath transform='translate(14,18) scale(0.35) rotate(-8)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%234f8fa0' fill-opacity='0.4'%3E%3Cpath transform='translate(95,40) scale(0.28) rotate(12)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%23aed3e4' fill-opacity='0.5'%3E%3Cpath transform='translate(40,95) scale(0.3) rotate(-15)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%234f8fa0' fill-opacity='0.35'%3E%3Cpath transform='translate(112,115) scale(0.33) rotate(6)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3C/svg%3E");
+  --texture-hearts: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg fill='%234fc1e0' fill-opacity='0.7'%3E%3Cpath transform='translate(14,18) scale(0.35) rotate(-8)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%230e7c9e' fill-opacity='0.55'%3E%3Cpath transform='translate(95,40) scale(0.28) rotate(12)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%234fc1e0' fill-opacity='0.65'%3E%3Cpath transform='translate(40,95) scale(0.3) rotate(-15)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%230e7c9e' fill-opacity='0.5'%3E%3Cpath transform='translate(112,115) scale(0.33) rotate(6)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3C/svg%3E");
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -53,7 +53,11 @@ html {
 }
 
 html, body {
-  overscroll-behavior: none;
+  /* Se permite el overscroll vertical a propósito: es lo que habilita el
+     gesto nativo de "deslizar hacia abajo para refrescar" en Chrome/Android.
+     Se bloquea solo el horizontal, para evitar el gesto de volver atrás. */
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: auto;
 }
 
 body {
@@ -309,12 +313,12 @@ section::after {
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.7;
   background-image: var(--texture-hearts);
   background-size: 150px 150px;
 }
 @media (max-width: 560px) {
-  section::after { background-size: 110px 110px; opacity: 0.4; }
+  section::after { background-size: 110px 110px; opacity: 0.55; }
 }
 
 .section-kicker {
@@ -394,7 +398,7 @@ section::after {
   margin-bottom: 2rem;
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: var(--shadow-soft), 0 0 0 6px rgba(255, 255, 255, 0.7), 0 0 0 7px rgba(174, 211, 228, 0.4);
+  box-shadow: var(--shadow-soft), 0 0 0 6px rgba(255, 255, 255, 0.7), 0 0 0 7px rgba(79, 193, 224, 0.4);
   background: var(--color-white);
 }
 
@@ -537,7 +541,7 @@ section::after {
   justify-content: center;
   background:
     radial-gradient(55% 45% at 82% 18%, rgba(238, 194, 126, 0.14), transparent 65%),
-    radial-gradient(50% 40% at 12% 85%, rgba(174, 211, 228, 0.3), transparent 65%),
+    radial-gradient(50% 40% at 12% 85%, rgba(79, 193, 224, 0.3), transparent 65%),
     linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
 }
 
@@ -574,7 +578,7 @@ section::after {
 /* ============ COUNTDOWN ============ */
 .countdown-section {
   background:
-    radial-gradient(55% 45% at 12% 15%, rgba(174, 211, 228, 0.35), transparent 62%),
+    radial-gradient(55% 45% at 12% 15%, rgba(79, 193, 224, 0.35), transparent 62%),
     radial-gradient(45% 40% at 88% 85%, rgba(238, 194, 126, 0.16), transparent 65%),
     var(--color-bg-alt);
 }
@@ -620,7 +624,7 @@ section::after {
 /* ============ INFO CARD ============ */
 .info-section {
   background:
-    radial-gradient(50% 40% at 85% 15%, rgba(174, 211, 228, 0.22), transparent 65%),
+    radial-gradient(50% 40% at 85% 15%, rgba(79, 193, 224, 0.22), transparent 65%),
     var(--color-bg);
 }
 
@@ -679,7 +683,7 @@ section::after {
 }
 .action-section-alt {
   background:
-    radial-gradient(45% 40% at 10% 88%, rgba(174, 211, 228, 0.25), transparent 65%),
+    radial-gradient(45% 40% at 10% 88%, rgba(79, 193, 224, 0.25), transparent 65%),
     var(--color-bg);
 }
 
@@ -790,7 +794,7 @@ section::after {
 .wish-textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(79, 143, 160, 0.15);
+  box-shadow: 0 0 0 3px rgba(14, 124, 158, 0.15);
 }
 
 .wish-input::placeholder,
