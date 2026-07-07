@@ -228,7 +228,7 @@ function initRevealAnimations() {
       opacity: 1,
       scale: 1,
       duration: 1,
-      ease: "back.out(1.6)",
+      ease: "back.out(1.25)",
       scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none reverse" },
     });
   });
@@ -607,33 +607,77 @@ function initScrollCue() {
 }
 
 /* ============================================================
-   12. PRELOADER
+   12. PORTADA CINEMATOGRÁFICA + VIDEO DE BIENVENIDA
+   "Toca para comenzar" → video con sonido a pantalla completa →
+   se revela el resto de la invitación (ya animada de fondo).
    ============================================================ */
-function initPreloader() {
-  const preloader = $("#preloader");
-  if (!preloader) return;
+function initIntroVideo() {
+  const gate = $("#intro-gate");
+  const startBtn = $("#intro-gate-btn");
+  const videoWrap = $("#intro-video-wrap");
+  const video = $("#intro-video");
+  const skipBtn = $("#intro-skip-btn");
+  const replayBtn = $("#replay-video-btn");
+  if (!videoWrap || !video || !skipBtn) return;
 
-  function reveal() {
+  let skipTimer = null;
+  let safetyTimer = null;
+
+  function closeGate() {
+    if (!gate) return;
     if (typeof gsap !== "undefined" && !prefersReducedMotion) {
-      gsap.to(preloader, {
-        opacity: 0,
-        duration: 0.7,
-        delay: 0.25,
-        ease: "power2.out",
-        onComplete: () => preloader.remove(),
-      });
+      gsap.to(gate, { opacity: 0, duration: 0.5, ease: "power2.out", onComplete: () => gate.remove() });
     } else {
-      preloader.remove();
+      gate.remove();
     }
   }
 
-  if (document.readyState === "complete") {
-    reveal();
-  } else {
-    window.addEventListener("load", reveal, { once: true });
-    // Salvavidas: nunca dejar al usuario esperando más de 2.5s
-    setTimeout(reveal, 2500);
+  // El video queda siempre en el DOM (oculto) para poder reabrirlo desde el botón del hero
+  function closeVideo() {
+    clearTimeout(skipTimer);
+    clearTimeout(safetyTimer);
+    videoWrap.classList.remove("is-visible");
+    skipBtn.classList.remove("is-visible");
+    video.pause();
+    setTimeout(() => {
+      videoWrap.hidden = true;
+      video.currentTime = 0;
+    }, 750);
   }
+
+  function openVideo() {
+    videoWrap.hidden = false;
+    requestAnimationFrame(() => videoWrap.classList.add("is-visible"));
+
+    video.currentTime = 0;
+    video.muted = false;
+    const playPromise = video.play();
+    if (playPromise && playPromise.catch) {
+      playPromise.catch(() => {
+        // El navegador bloqueó el audio: seguimos muteados antes que dejar la invitación trabada
+        video.muted = true;
+        video.play().catch(() => closeVideo());
+      });
+    }
+
+    skipBtn.classList.remove("is-visible");
+    skipTimer = setTimeout(() => skipBtn.classList.add("is-visible"), 1800);
+    // Salvavidas: si 'ended' no dispara por algún motivo, no dejar al usuario atrapado
+    safetyTimer = setTimeout(closeVideo, 30000);
+  }
+
+  if (startBtn) {
+    startBtn.addEventListener("click", () => { closeGate(); openVideo(); }, { once: true });
+  }
+  if (replayBtn) {
+    replayBtn.addEventListener("click", openVideo);
+  }
+  skipBtn.addEventListener("click", closeVideo);
+  video.addEventListener("ended", closeVideo);
+  video.addEventListener("error", closeVideo);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !videoWrap.hidden) closeVideo();
+  });
 }
 
 /* ============================================================
@@ -655,7 +699,7 @@ function initSafetyNet() {
    INIT
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  initPreloader();
+  initIntroVideo();
   initActionLinks();
   initCountdown();
   initScrollProgress();

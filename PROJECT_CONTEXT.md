@@ -35,12 +35,21 @@ No se han borrado todavía porque no se ha confirmado explícitamente que deban 
 - Se corrigió un bug de **z-index** que ocultaba las decoraciones SVG (elefante, globos, estrellas, etc.) detrás del fondo de otras secciones. Fix: cada `<section>` usa `isolation: isolate` para crear su propio contexto de apilamiento, y `.decor` usa `z-index: -1` relativo a esa sección (ver `styles.css`, commit `cbc8615`).
 - Animaciones vivas ya implementadas: oreja del elefante moviéndose, parpadeo, flotación de globos/nubes, parallax sutil en el hero, confeti en la sección final, reveal de texto palabra por palabra.
 
-## Assets pendientes de integrar
+## Assets
 
-La carpeta `assets/` **todavía no existe en el repo**. Referencias en el código que la esperan:
-- `assets/hero.png` — imagen principal de la invitación (hero). Si falta, hay un fallback CSS (`.hero-fallback`) que se activa solo con un ilustración simplificada.
-- `assets/music.mp3` — música de fondo opcional (el botón de música falla silenciosamente si no existe).
-- **Video de bienvenida (nuevo, terminado en Kling 3.0):** el elefante baja en un globo aerostático, saluda, habla, señala la información del evento, se despide, y luego nubes/globos cubren la pantalla para dar paso al resto de la invitación. **Aún no está integrado en el sitio** — no hay `<video>` ni lógica en `index.html`/`script.js` que lo reproduzca todavía. Es un candidato claro para reemplazar o complementar el preloader/hero actual.
+La carpeta `assets/` ya existe en el repo:
+- `assets/hero.png` — miniatura 9:16 (501×888) tomada del primer frame del video de bienvenida (globos celestes + banderines + "Baby Shower Máximo"). Reemplazó el placeholder; si llegara a faltar, sigue existiendo el fallback CSS (`.hero-fallback`).
+- `assets/video-bienvenida.mp4` — video de bienvenida (Kling 3.0, ~15s, elefante bajando en globo aerostático, saluda, habla, señala la info del evento, se despide, nubes/globos cubren pantalla). **Ya integrado**: reemplazó el preloader — ver sección siguiente.
+- `assets/music.mp3` — **todavía no existe**; música de fondo opcional (el botón de música falla silenciosamente si no existe).
+
+## Video de bienvenida (integrado)
+
+Reemplaza el antiguo preloader (`#preloader` fue eliminado). Flujo:
+1. Al cargar, se ve `#intro-gate` — pantalla "Toca para comenzar" con el globo aerostático y un botón con pulso sutil (evita el bloqueo de autoplay con audio de los navegadores).
+2. Al tocar, se cierra el gate y se muestra `#intro-video-wrap` a pantalla completa (`object-fit: contain`, para no recortar el video) reproduciendo `assets/video-bienvenida.mp4` con sonido.
+3. Aparece un botón "Cerrar ✕" a los ~1.8s. Al terminar el video (`ended`), al tocar "Cerrar", o con Escape, se desvanece y se revela el resto de la invitación (que ya se animó de fondo mientras tanto).
+4. El video **no se destruye** al cerrarse — queda pausado y oculto en el DOM. Hay un botón ▶ circular sobre la imagen del hero (`#replay-video-btn`, esquina inferior derecha de `.hero-image-wrap`) para volver a verlo cuando quieran, sin recargar la página.
+5. Toda la lógica vive en `initIntroVideo()` en `script.js`; los estilos en la sección "PORTADA CINEMATOGRÁFICA" / "VIDEO DE BIENVENIDA" de `styles.css`.
 
 ## Dirección de diseño (foco actual)
 
@@ -73,3 +82,8 @@ Pendiente de validar visualmente en navegador (no se pudo verificar con captura 
 | 2026-07-07 | Fix de z-index en decoraciones (`isolation: isolate` por sección). |
 | 2026-07-07 | Video de bienvenida producido en Kling 3.0 (pendiente de integrar). |
 | 2026-07-07 | Foco de trabajo: solo diseño visual, dirección Disney/Pixar + acuarela. |
+| 2026-07-07 | Persona de trabajo adoptada: Director Creativo Digital (elegancia, restricción, movimiento físico) para todo el trabajo visual — ver brief del usuario. |
+| 2026-07-07 | Sombras suavizadas (~25-35% menos alpha) y tilt del countdown reducido de ±1.1° a ±0.6°; rebote de reveal-scale de `back.out(1.6)` a `back.out(1.25)`. |
+| 2026-07-07 | Video de bienvenida integrado: reemplaza el preloader con flujo "toca para comenzar" → video con sonido → reveal. Botón ▶ en el hero para volver a verlo. |
+| 2026-07-07 | `assets/hero.png` agregado: miniatura 9:16 del primer frame del video (globos + banderines + texto). `.hero-image-wrap` pasó de aspect-ratio 3:4 a 9:16 para no recortarla. |
+| 2026-07-07 | Usuario pidió usar 4 imágenes de stock (depositphotos) como fondo/decoración. 3 de 4 tenían marca de agua o eran vector genérico plano (conflicto con la dirección de diseño) → en vez de usarlas, se recreó la idea en el sistema SVG propio: textura de corazones dispersos (`--texture-hearts`, aplicada vía `section::after` en TODAS las secciones como fondo general) + racimos de globos añadidos en `rsvp` y `finale` + elefante replicado (tamaño nuevo `decor-elephant-sm`) en `info`. Cero assets externos con licencia dudosa. |

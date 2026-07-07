@@ -130,11 +130,28 @@
   </defs>
 </svg>
 
-<!-- ============ PRELOADER ============ -->
-<div id="preloader" aria-hidden="true">
-  <div class="preloader-mark">
-    <span class="preloader-balloon"></span>
-  </div>
+<!-- ============ PORTADA CINEMATOGRÁFICA: toca para comenzar ============ -->
+<div id="intro-gate" class="intro-gate">
+  <div class="intro-gate-decor decor-float" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+  <p class="intro-gate-eyebrow">Baby Shower de Máximo</p>
+  <h1 class="intro-gate-title">Tu invitación<br>te espera</h1>
+  <button id="intro-gate-btn" class="btn btn-primary intro-gate-btn" type="button">
+    <span class="btn-icon" aria-hidden="true">🎈</span>
+    Toca para comenzar
+  </button>
+</div>
+
+<!-- ============ VIDEO DE BIENVENIDA ============ -->
+<div id="intro-video-wrap" class="intro-video-wrap" hidden>
+  <video
+    id="intro-video"
+    class="intro-video"
+    src="assets/video-bienvenida.mp4"
+    playsinline
+    webkit-playsinline="true"
+    preload="none"
+  ></video>
+  <button id="intro-skip-btn" class="intro-skip-btn" type="button">Cerrar ✕</button>
 </div>
 
 <!-- ============ AMBIENT PARTICLES CANVAS ============ -->
@@ -157,6 +174,9 @@
     <div class="decor decor-hotair-lg decor-float-slow" style="top:6%; right:4%; opacity:0.55;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
     <div class="decor decor-round-md decor-float" style="top:20%; left:6%; opacity:0.5;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
     <div class="decor decor-round-sm decor-float-slow" style="top:58%; right:10%; opacity:0.45;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-sm decor-float" style="top:38%; left:16%; opacity:0.35;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-md decor-float-slow" style="top:74%; right:20%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-hotair-sm decor-float" style="top:66%; left:22%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
     <div class="decor decor-elephant-md decor-float-slow" style="bottom:1%; left:2%; opacity:0.95;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
 
     <div class="hero-inner">
@@ -179,6 +199,9 @@
           </div>
         </div>
         <div class="hero-image-glow"></div>
+        <button id="replay-video-btn" class="hero-video-btn" type="button" aria-label="Ver el video de bienvenida">
+          <span class="hero-video-btn-icon" aria-hidden="true">▶</span>
+        </button>
       </div>
 
       <h1 class="hero-title reveal-up">Baby Shower de&nbsp;Máximo</h1>
@@ -195,6 +218,9 @@
     <div class="decor decor-md decor-float" style="top:14%; left:8%;" aria-hidden="true"><svg><use href="#decor-star"></use></svg></div>
     <div class="decor decor-sprig decor-float-slow" style="bottom:10%; right:9%;" aria-hidden="true"><svg><use href="#decor-sprig"></use></svg></div>
     <div class="decor decor-round-sm decor-float" style="top:62%; right:8%;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-md decor-float-slow" style="top:20%; right:18%; opacity:0.35;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-hotair-sm decor-float" style="bottom:14%; left:14%; opacity:0.35;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+    <div class="decor decor-elephant-sm decor-float-slow" style="top:60%; left:6%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
     <p class="story-text" data-split-text>Acompáñanos a celebrar la dulce espera de…</p>
   </section>
 
@@ -205,6 +231,9 @@
     <div class="decor decor-hotair-sm decor-float" style="bottom:8%; right:6%;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
     <div class="decor decor-sparkle decor-sparkle-sm decor-twinkle" style="top:20%; left:20%;" aria-hidden="true"><svg><use href="#decor-sparkle"></use></svg></div>
     <div class="decor decor-sparkle decor-sparkle-xs decor-twinkle-slow" style="bottom:30%; right:20%;" aria-hidden="true"><svg><use href="#decor-sparkle"></use></svg></div>
+    <div class="decor decor-round-sm decor-float" style="top:8%; left:10%; opacity:0.35;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-md decor-float-slow" style="bottom:18%; right:16%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-elephant-sm decor-float" style="top:64%; left:4%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
     <p class="name-reveal-label reveal-up">Nuestro pequeño príncipe💙</p>
     <h2 class="name-reveal-title" id="baby-name">Máximo</h2>
     <div class="name-underline reveal-scale"></div>
@@ -215,6 +244,9 @@
     <div class="decor decor-sm decor-float" style="top:8%; left:6%;" aria-hidden="true"><svg><use href="#decor-star"></use></svg></div>
     <div class="decor decor-sm decor-float-slow" style="top:12%; right:7%;" aria-hidden="true"><svg><use href="#decor-star"></use></svg></div>
     <div class="decor decor-hotair-sm decor-float-slow" style="bottom:6%; left:5%;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+    <div class="decor decor-round-sm decor-float" style="top:20%; left:16%; opacity:0.35;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-md decor-float-slow" style="bottom:10%; right:10%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-elephant-sm decor-float" style="top:66%; right:6%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
     <p class="section-kicker reveal-up">Faltan solo</p>
     <div class="countdown-grid">
       <div class="countdown-unit reveal-up">
@@ -240,6 +272,9 @@
   <section class="info-section" id="info">
     <div class="decor decor-sprig decor-float-slow" style="top:8%; left:6%;" aria-hidden="true"><svg><use href="#decor-sprig"></use></svg></div>
     <div class="decor decor-round-sm decor-float" style="top:10%; right:8%;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-elephant-sm decor-float-slow" style="bottom:2%; right:4%; opacity:0.6;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
+    <div class="decor decor-hotair-sm decor-float" style="bottom:8%; left:8%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+    <div class="decor decor-round-md decor-float-slow" style="top:60%; right:20%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
     <div class="info-card reveal-up">
       <div class="info-row">
         <span class="info-icon" aria-hidden="true">📅</span>
@@ -271,6 +306,10 @@
   <section class="action-section" id="rsvp">
     <div class="decor decor-md decor-float" style="top:10%; right:8%;" aria-hidden="true"><svg><use href="#decor-heart"></use></svg></div>
     <div class="decor decor-round-md decor-float-slow" style="bottom:8%; left:6%;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-sm decor-float" style="bottom:16%; left:11%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-sm decor-float-slow" style="top:18%; right:14%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-hotair-sm decor-float" style="top:8%; left:10%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+    <div class="decor decor-elephant-sm decor-float-slow" style="bottom:4%; right:22%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
     <p class="section-kicker reveal-up">Tu presencia lo hará especial</p>
     <h3 class="action-title reveal-up">Confirmar asistencia</h3>
     <a href="#" id="btn-whatsapp" class="btn btn-primary reveal-up" target="_blank" rel="noopener">
@@ -283,6 +322,9 @@
   <section class="action-section action-section-alt" id="location">
     <div class="decor decor-md decor-float-slow" style="top:9%; left:7%;" aria-hidden="true"><svg><use href="#decor-balloon"></use></svg></div>
     <div class="decor decor-hotair-sm decor-float" style="bottom:10%; right:7%;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+    <div class="decor decor-round-sm decor-float-slow" style="top:14%; right:16%; opacity:0.35;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-md decor-float" style="bottom:16%; left:16%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-elephant-sm decor-float-slow" style="top:62%; right:4%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
     <p class="section-kicker reveal-up">¿Cómo llegar?</p>
     <h3 class="action-title reveal-up">Caleta de Camarones 0680, Maipú</h3>
     <a href="#" id="btn-maps" class="btn btn-secondary reveal-up" target="_blank" rel="noopener">
@@ -296,6 +338,9 @@
     <div class="decor decor-sm decor-float" style="top:8%; right:9%;" aria-hidden="true"><svg><use href="#decor-moon"></use></svg></div>
     <div class="decor decor-sm decor-float-slow" style="bottom:12%; left:8%;" aria-hidden="true"><svg><use href="#decor-star"></use></svg></div>
     <div class="decor decor-round-sm decor-float" style="top:10%; left:8%;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-hotair-sm decor-float-slow" style="bottom:8%; right:10%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+    <div class="decor decor-round-md decor-float" style="top:60%; right:20%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-elephant-sm decor-float-slow" style="bottom:2%; left:20%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
     <p class="section-kicker reveal-up">No te lo pierdas</p>
     <h3 class="action-title reveal-up">Agrega la fecha a tu calendario</h3>
     <button id="btn-calendar" class="btn btn-secondary reveal-up">
@@ -308,6 +353,9 @@
   <section class="action-section action-section-alt" id="wishes">
     <div class="decor decor-md decor-float" style="top:8%; left:8%;" aria-hidden="true"><svg><use href="#decor-heart"></use></svg></div>
     <div class="decor decor-hotair-sm decor-float-slow" style="bottom:8%; right:6%;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+    <div class="decor decor-round-sm decor-float" style="top:12%; right:14%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-md decor-float-slow" style="bottom:14%; left:18%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-elephant-sm decor-float" style="top:58%; left:4%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
     <p class="section-kicker reveal-up">Un mensaje para el futuro</p>
     <h3 class="action-title reveal-up">Escribe tu deseo para Máximo</h3>
     <p class="wish-hint reveal-up">Quedará guardado para que, más adelante, pueda leer lo que le deseaste hoy.</p>
@@ -344,6 +392,10 @@
     <div class="decor decor-lg" style="bottom:6%; left:50%; transform:translateX(-50%); opacity:0.35;" aria-hidden="true"><svg><use href="#decor-rainbow"></use></svg></div>
     <div class="decor decor-sprig decor-float-slow" style="top:8%; right:8%;" aria-hidden="true"><svg><use href="#decor-sprig"></use></svg></div>
     <div class="decor decor-round-sm decor-float" style="top:14%; left:8%;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-md decor-float-slow" style="top:9%; left:16%; opacity:0.4;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-round-sm decor-float" style="top:22%; left:6%; opacity:0.35;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
+    <div class="decor decor-hotair-sm decor-float" style="bottom:14%; left:10%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-hotair"></use></svg></div>
+    <div class="decor decor-round-sm decor-float-slow" style="bottom:20%; right:18%; opacity:0.3;" aria-hidden="true"><svg><use href="#decor-balloon-round"></use></svg></div>
     <div class="decor decor-elephant-lg decor-float-slow" style="bottom:3%; right:3%; opacity:0.95;" aria-hidden="true"><svg><use href="#decor-elephant"></use></svg></div>
     <div class="decor decor-sparkle decor-sparkle-sm decor-twinkle" style="top:24%; left:14%;" aria-hidden="true"><svg><use href="#decor-sparkle"></use></svg></div>
     <div class="decor decor-sparkle decor-sparkle-xs decor-twinkle-slow" style="top:40%; right:22%;" aria-hidden="true"><svg><use href="#decor-sparkle"></use></svg></div>
