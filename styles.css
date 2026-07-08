@@ -36,7 +36,7 @@
   --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
   /* ---- Fondo general: corazoncitos dispersos en acuarela, muy sutil (propio, no stock) ---- */
-  --texture-hearts: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg fill='%234fc1e0' fill-opacity='0.7'%3E%3Cpath transform='translate(14,18) scale(0.35) rotate(-8)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%230e7c9e' fill-opacity='0.55'%3E%3Cpath transform='translate(95,40) scale(0.28) rotate(12)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%234fc1e0' fill-opacity='0.65'%3E%3Cpath transform='translate(40,95) scale(0.3) rotate(-15)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%230e7c9e' fill-opacity='0.5'%3E%3Cpath transform='translate(112,115) scale(0.33) rotate(6)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3C/svg%3E");
+  --texture-hearts: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg fill='%237fcae2' fill-opacity='0.63'%3E%3Cpath transform='translate(14,18) scale(0.35) rotate(-8)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%232f869f' fill-opacity='0.48'%3E%3Cpath transform='translate(95,40) scale(0.28) rotate(12)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%237fcae2' fill-opacity='0.58'%3E%3Cpath transform='translate(40,95) scale(0.3) rotate(-15)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3Cg fill='%232f869f' fill-opacity='0.43'%3E%3Cpath transform='translate(112,115) scale(0.33) rotate(6)' d='M24 40 C10 28 2 20 2 11 C2 4 8 0 14 0 C19 0 22 3 24 7 C26 3 29 0 34 0 C40 0 46 4 46 11 C46 20 38 28 24 40Z'/%3E%3C/g%3E%3C/svg%3E");
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -313,12 +313,12 @@ section::after {
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.6;
   background-image: var(--texture-hearts);
   background-size: 150px 150px;
 }
 @media (max-width: 560px) {
-  section::after { background-size: 110px 110px; opacity: 0.55; }
+  section::after { background-size: 110px 110px; opacity: 0.48; }
 }
 
 .section-kicker {
