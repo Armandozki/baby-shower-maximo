@@ -18,7 +18,7 @@ const CONFIG = {
 
   // ---- WhatsApp (confirmar asistencia) ----
   // Reemplaza por el número real, con código de país, sin +, espacios ni guiones. Ej: "56912345678"
-  whatsappNumber: "56900000000",
+  whatsappNumber: "56952249573",
   whatsappMessage: "¡Hola! Quiero confirmar mi asistencia al Baby Shower de Máximo 💙",
 
   // ---- Marca / colores (deben coincidir con las variables CSS en :root) ----
