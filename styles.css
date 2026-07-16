@@ -884,14 +884,14 @@ section::after {
   filter: drop-shadow(0 10px 20px rgba(60,110,125,0.25));
 }
 
-.finale-title {
+.finale-quote {
   font-family: var(--font-display);
   font-weight: 500;
   font-style: italic;
-  font-size: clamp(1.1rem, 3.6vw, 1.55rem);
+  font-size: clamp(1rem, 3.2vw, 1.35rem);
   line-height: 1.55;
-  color: var(--color-primary-dark);
-  margin: 0 0 1.1rem;
+  color: var(--color-primary);
+  margin: 1.75rem 0 0;
 }
 
 .finale-text {
