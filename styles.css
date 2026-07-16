@@ -863,7 +863,7 @@ section::after {
 
 .finale-inner {
   position: relative;
-  max-width: 34ch;
+  max-width: 38ch;
   z-index: 1;
 }
 
@@ -887,9 +887,11 @@ section::after {
 .finale-title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+  font-style: italic;
+  font-size: clamp(1.1rem, 3.6vw, 1.55rem);
+  line-height: 1.55;
   color: var(--color-primary-dark);
-  margin: 0 0 1rem;
+  margin: 0 0 1.1rem;
 }
 
 .finale-text {
