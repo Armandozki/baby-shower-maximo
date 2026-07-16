@@ -488,7 +488,7 @@ section::after {
 .hero-subtitle {
   font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: var(--color-ink-soft);
-  max-width: 30ch;
+  max-width: 36ch;
   margin: 0 0 3rem;
   font-weight: 300;
 }
@@ -756,6 +756,15 @@ section::after {
 
 .btn-icon { display: inline-flex; width: 0.95rem; height: 0.95rem; }
 .btn-icon svg { width: 100%; height: 100%; display: block; }
+
+/* ============ TEXTO DE APOYO (bajo kicker o título, reutilizado en varias secciones) ============ */
+.section-hint {
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+  font-weight: 300;
+  max-width: 34ch;
+  margin: 0 0 2rem;
+}
 
 /* ============ DESEO PARA MÁXIMO (formulario) ============ */
 .wish-hint {
